@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>🤫 A secret for you</title>
+<link rel="icon" href="https://pub-d9609ae6ff8748d1b36820c3df822fa1.r2.dev/favicon.ico">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,700;1,500&family=Nunito:wght@600;800&display=swap" rel="stylesheet">
+<style>
+:root{--wine:#1a0509;--maroon:#4a0d1a;--rose:#e8a0a8;--gold:#f0c674;--blush:#ffe3e6;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-padding-top:env(safe-area-inset-top,0px);height:100%;height:100dvh}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{margin:0;height:100%;height:100dvh;overflow:hidden;overscroll-behavior:none;touch-action:manipulation;-webkit-text-size-adjust:100%;background:radial-gradient(120% 90% at 40% 0%,var(--maroon) 0%,var(--wine) 55%,#0d0205 100%);color:var(--blush);font-family:'Nunito',system-ui,sans-serif;user-select:none}
+#stars,#fx{position:fixed;inset:0;pointer-events:none;overflow:hidden}
+#stars i{position:absolute;width:3px;height:3px;border-radius:50%;background:var(--rose);animation:tw 3s ease-in-out infinite}
+@keyframes tw{50%{opacity:.15;transform:scale(.5)}}
+.stage{position:fixed;inset:0;display:none;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:24px;gap:22px}
+.stage.on{display:flex;animation:in .6s ease}
+@keyframes in{from{opacity:0;transform:scale(.96)}}
+h1{font-family:'Cormorant Garamond',Georgia,serif;font-weight:700;font-size:clamp(2.4rem,11vw,4.2rem);line-height:1.05;margin:0;color:var(--gold);text-shadow:0 0 30px rgba(240,198,116,.35)}
+p.sub{margin:0;font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-size:1.5rem;color:var(--rose)}
+.hint{font-size:.9rem;color:var(--rose);opacity:.7;animation:pulse 1.8s infinite}
+@keyframes pulse{50%{opacity:.25}}
+button.cta{border:0;font:800 1.05rem 'Nunito',sans-serif;color:#2a060d;padding:16px 34px;border-radius:999px;cursor:pointer;background:linear-gradient(90deg,var(--gold),#e58a8a);box-shadow:0 6px 0 #7a2a2f,0 10px 26px rgba(0,0,0,.45);transition:transform .1s}
+button.cta:active{transform:translateY(4px);box-shadow:0 2px 0 #7a2a2f}
+.cake{position:relative;width:92px;height:74px;border-radius:10px 10px 14px 14px;background:linear-gradient(#ffe9d6,#f3c9a8);box-shadow:0 10px 28px rgba(0,0,0,.5);margin-top:40px}
+.cake:before{content:"";position:absolute;left:0;right:0;top:-2px;height:16px;border-radius:10px 10px 12px 12px;background:var(--rose)}
+.flame{position:absolute;left:50%;top:-38px;width:16px;height:30px;margin-left:-8px;border-radius:50% 50% 50% 50%/60% 60% 40% 40%;background:radial-gradient(#fff6c8,var(--gold) 60%,#e07a2a);box-shadow:0 0 22px 8px rgba(240,198,116,.6);animation:fl .18s alternate infinite}
+.cake .wick{position:absolute;left:50%;top:-12px;width:3px;height:12px;margin-left:-1.5px;background:#4a2a1a}
+@keyframes fl{to{transform:scale(1.08,.92) rotate(3deg)}}
+.balloon{position:fixed;bottom:-130px;width:64px;height:78px;border:0;padding:0;border-radius:50% 50% 48% 48%;cursor:pointer;z-index:5;animation:rise linear forwards}
+.balloon:after{content:"";position:absolute;left:50%;top:100%;width:2px;height:70px;background:rgba(240,198,116,.5)}
+.balloon:before{content:"";position:absolute;left:14px;top:12px;width:12px;height:22px;border-radius:50%;background:rgba(255,255,255,.35);transform:rotate(25deg)}
+@keyframes rise{to{transform:translateY(-125vh)}}
+.p{position:fixed;pointer-events:none;z-index:20}
+.emoji{font-size:clamp(6rem,34vw,10rem);animation:bob 1s ease-in-out infinite;filter:drop-shadow(0 10px 20px rgba(0,0,0,.5))}
+@keyframes bob{50%{transform:translateY(-14px) rotate(6deg) scale(1.06)}}
+.fall{position:fixed;top:-60px;z-index:3;pointer-events:none;animation:drop linear forwards}
+@keyframes drop{to{transform:translateY(115vh) rotate(200deg)}}
+button.cta:disabled{opacity:.45;filter:grayscale(.4);box-shadow:0 6px 0 #4a1a1e;cursor:default}
+.em2{font-size:3.4rem;animation:bob 2s ease-in-out infinite}
+.emoji.big{font-size:clamp(5rem,28vw,8rem)}
+/* Mobile-first: everything above is sized for phones. Desktop tweaks below. */
+@media (min-width:700px){.balloon{width:84px;height:102px}.cake{transform:scale(1.25)}button.cta{padding:18px 44px;font-size:1.2rem}p.sub{font-size:2rem}}
+@media (prefers-reduced-motion:reduce){.flame,.hint,#stars i,.emoji{animation:none}}
+</style>
+</head>
+<body>
+<div id="stars"></div>
+<div id="fx"></div>
+
+<!-- EDIT HERE: her name shows at the end. Change the texts in the <section> blocks below to customise. -->
+<script>const HER_NAME="My Gulabo 🌹";</script>
+
+<section class="stage on" id="s0">
+  <div class="cake"><div class="wick"></div><div class="flame"></div></div>
+  <h1>A secret for you</h1>
+  <button class="cta" data-next disabled>Click to reveal</button>
+  <div class="hint" id="pophint">Pop 2 balloons to unlock 🎈 (0/2)</div>
+</section>
+
+<section class="stage" id="s1">
+  <div class="em2">✨</div>
+  <h1>You are special</h1>
+  <!-- <p class="sub">more than you know</p> -->
+  <div class="hint">Tap to continue</div>
+</section>
+
+<section class="stage" id="s2">
+  <h1>It's a special day</h1>
+  <div class="hint">Tap to continue</div>
+</section>
+
+<section class="stage" id="s3">
+  <div class="emoji big">💝</div>
+  <h1>Compounder(🐴) made this<br>for you 🎃</h1>
+  <div class="hint">Tap to continue</div>
+</section>
+
+<section class="stage" id="s4">
+  <p class="sub">Get ready to smile</p>
+  <div class="emoji">🥰</div>
+  <div class="hint">Tap to continue</div>
+</section>
+
+<section class="stage" id="s5">
+  <h1>Happy Birthday<br>to you</h1>
+  <p class="sub" id="name"></p>
+</section>
+
+<script>
+const $=(s)=>document.querySelector(s), fx=$('#fx');
+const COLORS=['#e8a0a8','#f0c674','#c1273f','#ffe3e6','#8c1a2e','#e58a8a'];
+const rnd=(a,b)=>a+Math.random()*(b-a);
+
+// stars
+for(let i=0;i<40;i++){const s=document.createElement('i');s.style.left=rnd(0,100)+'%';s.style.top=rnd(0,100)+'%';s.style.animationDelay=rnd(0,3)+'s';$('#stars').append(s)}
+
+// particle burst (confetti). angle in degrees, 0 = right, 90 = up
+function burst(x,y,n,minA,maxA,power,d0=1400,d1=2400,fall=320){
+  for(let i=0;i<n;i++){
+    const e=document.createElement('div');e.className='p';
+    const sz=rnd(6,11);e.style.cssText+=`left:${x}px;top:${y}px;width:${sz}px;height:${sz*rnd(.5,1.4)}px;background:${COLORS[i%COLORS.length]};border-radius:${Math.random()<.3?'50%':'2px'}`;
+    fx.append(e);
+    const a=rnd(minA,maxA)*Math.PI/180,d=rnd(.4,1)*power;
+    const dx=Math.cos(a)*d,dy=-Math.sin(a)*d;
+    e.animate([{transform:'translate(0,0) rotate(0)',opacity:1},
+      {transform:`translate(${dx}px,${dy}px) rotate(${rnd(200,600)}deg)`,opacity:1,offset:.55},
+      {transform:`translate(${dx*1.15}px,${dy+fall}px) rotate(${rnd(600,900)}deg)`,opacity:0}],
+      {duration:rnd(d0,d1),easing:'cubic-bezier(.2,.7,.4,1)'}).onfinish=()=>e.remove();
+  }
+}
+const W=()=>innerWidth,H=()=>innerHeight;
+
+// balloons
+const BAL=['#c1273f','#8c1a2e','#e8a0a8','#a3213a','#d96a7a'];
+let balTimer,popped=0;
+function spawnBalloon(){
+  if(!$('#s0').classList.contains('on'))return;
+  const b=document.createElement('button');b.className='balloon';b.setAttribute('aria-label','Pop balloon');
+  const c=BAL[Math.floor(rnd(0,BAL.length))];
+  b.style.cssText+=`left:${rnd(2,88)}%;background:radial-gradient(circle at 35% 30%,${c},#3a0710);animation-duration:${rnd(7,12)}s`;
+  b.onclick=(e)=>{e.stopPropagation();const r=b.getBoundingClientRect();burst(r.left+32,r.top+38,18,0,360,110);b.remove();popped++;
+    if(popped>=2){$('[data-next]').disabled=false;$('#pophint').textContent='Ready! Tap the button 💌'}
+    else $('#pophint').textContent='Pop 2 balloons to unlock 🎈 ('+popped+'/2)'};
+  b.addEventListener('animationend',()=>b.remove());
+  document.body.append(b);
+}
+for(let i=0;i<4;i++)setTimeout(spawnBalloon,i*350);
+balTimer=setInterval(spawnBalloon,1100);
+
+// long, gentle confetti: diagonal from both bottom corners + a soft rain from the top
+function special(){
+  const p=Math.min(W(),H())*.95;
+  burst(0,H(),28,45,70,p,5000,7000,H()*.5);
+  burst(W(),H(),28,110,135,p,5000,7000,H()*.5);
+  for(let i=0;i<32;i++)setTimeout(()=>{
+    const e=document.createElement('div');e.className='p';const sz=rnd(6,10);
+    e.style.cssText+=`left:${rnd(0,100)}%;top:-20px;width:${sz}px;height:${sz*1.4}px;background:${COLORS[i%COLORS.length]};border-radius:2px`;
+    fx.append(e);
+    e.animate([{transform:'translate(0,0) rotate(0)'},{transform:`translate(${rnd(-60,60)}px,${H()+40}px) rotate(${rnd(360,720)}deg)`}],
+      {duration:rnd(7000,10000),easing:'linear'}).onfinish=()=>e.remove();
+  },i*180);
+}
+
+// slow, sparse falling items (max 7 on screen so it never gets cluttered)
+let rain;
+function stopFall(){clearInterval(rain);document.querySelectorAll('.fall').forEach(f=>f.remove())}
+function startFall(items){
+  stopFall();
+  const drop=()=>{
+    if(document.querySelectorAll('.fall').length>=7)return;
+    const f=document.createElement('div');f.className='fall';f.textContent=items[Math.floor(rnd(0,items.length))];
+    f.style.left=rnd(3,92)+'%';f.style.fontSize=rnd(1.5,2.3)+'rem';f.style.animationDuration=rnd(9,14)+'s';
+    document.body.append(f);f.addEventListener('animationend',()=>f.remove());
+  };
+  drop();rain=setInterval(drop,1500);
+}
+
+// stage flow
+let cur=0;
+function go(n){
+  $('#s'+cur).classList.remove('on');cur=n;$('#s'+cur).classList.add('on');
+  if(n===1){clearInterval(balTimer);document.querySelectorAll('.balloon').forEach(b=>b.remove());stopFall();special()}
+  if(n===2)startFall(['⭐','🎈','🎁','🎉','✨']);
+  if(n===3)startFall(['💝','❤️','💖','💗']);
+  if(n===4)startFall(['⭐','🌟','✨']);
+  if(n===5){$('#name').textContent=HER_NAME;startFall(['⭐','🎁','✨','🎁']);special();setTimeout(special,9000)}
+}
+document.querySelectorAll('.stage').forEach((st,i)=>{
+  if(i===0){st.querySelector('[data-next]').onclick=()=>go(1)}
+  else if(i<5){st.onclick=()=>go(i+1)}
+});
+</script>
+</body>
+</html>
